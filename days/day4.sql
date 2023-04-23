@@ -1,0 +1,13 @@
+set sql_safe_updates = 0;
+use day_4;
+show tables;
+select * from customers;
+select id,first_name,gender from customers;
+select id,id+10, first_name from customers;
+select * from customers where country = 'france';
+select * from customers where id>10;
+UPDATE customers set first_name = 'chutiya' where country = 'china';
+update customers set last_name = 'lab';
+DELETE FROM customers WHERE id=12;
+delete from customers where country = 'china';
+delete from customers;

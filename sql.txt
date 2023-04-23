@@ -1,0 +1,97 @@
+//ROWS -> TUPPLE -> ENTITY
+
+// TO SHOW ALL DATABASES 
+show databases;
+// TO CREATE A NEW DATABASE
+create database name;
+// TO SELECT A DATABASE
+use name;
+// TO CREATE A TABLE IN DB WITH COLUMNS MENTIONS
+create table kuch_bhi(/*columns:*/ kuch_bhi_id int, kuch_bhi_name varchar(20));
+insert into kuch_bhi values(1,'Raj');
+select * from kuch_bhi;
+select kuch_bhi_name from kuch_bhi;
+insert into kuch_bhi values(1,'Raj'),(2,'Rajat'),(3,'Raju'),(4,'Rajesh');
+select * from kuch_bhi;
+drop table kuch_bhi;
+// TO CLEAR UP THE QUERIES
+system cls;
+
+// VARCHAR VS CHAR
+
+//CHAR -> char(15)
+-> IF WE DECLARE LESS THAN 15 CHAR IN THE ELEMENT OF 15, IT WILL PROVIDE ALL 15 UNITS 
+
+//VARCHAR => VARIABLE LENGTH CHAR 
+-> varchar(15)
+
+//EMPTY VS NULL
+
+-> EMPTY MEANS UNRESERVED AND CAN BE OCCUPIED LATER.
+-> NULL MEANS UNRESERVED BUT CANNOT BE OCCUPIED LATER.
+
+//DEFAULT
+-> KUCH BHI NA MILE TO YEH TO DE HI DE (LIKE ELSE)
+
+# TABLE PLAYERS
+create table players(player_id int, player_name varchar(20), score int default 0);
+desc players;
+rename table players to players;
+desc players;
+//insert into kuch_bhi(kuch_bhi_id) ==> INCOMPLETE
+insert into players values(1,'raj',39),(2,'rajesh',10), (3,'raju');
+select * from players;
+
+// COPY THE DATA OF ONE TABLE TO ANOTHER TABLE
+
+-> COPIYNG SHOULD BE DONE WHILE CREATING
+
+create table copied_players as select * from players;
+select * from copied_players;
+
+//CONSTRAINTS -> LIMITATIONS -> AT THE TIME OF CRATION OF TABLE;
+=> IN FROM * IS USED TO SEND DATA COMPULSARY
+-> THIS USE PROPERTY "NOTNULL".
+drop table players;
+drop table copied_players;
+create table students (stud_id int not null, stud_name varchar(30) not null);
+insert into students(stud_id) values(1) -> ERROR
+insert into students value (1,'zafar');
+select * from students;
+
+//UNIQUE -> OCCURED SINGLE TIME
+-> Unique can be used many times.
+drop table students;
+create table students (stud_id int not null unique, stud_name varchar(20) not null);
+insert into students values (1,'raj');
+select * from students;
+insert into students values (1,'raju'); -> ERROR
+insert into students values (2,'raju');
+
+// AUTO INCREMENT :- To insert new data regularly without checking up the last data.
+-> IT IS A CONSTRAINT WHICH SET UP AT CREATION OF TABLES.
+-> Always done with a key :- Primary or foreign , etc.
+
+// SELECTING PARTICULAR COLUMN 
+-> MANIPULATIONS WHILE SELECTING DOESNT EFFECT ACTUAL TABLE INSTED CREATE A VIRTUAL SPACE FOR THAT OPERATION 
+ONLY
+-> EG:-  select prod_id,prod_id + 5, prod_name from products;
+// TO CHANGE THE VIRTUAL MEMORY NAME WHILE CREATION => KNOWN AS ALIASE
+select prod_id,prod_id + 5 as increment_id, prod_name from products;
+
+// WHERE
+
+ select * from products where prod_id = 2;
+
+//UPDATE 
+ update products set prod_name = 'Iphone 14' where prod_id = 1;
+
+// DELETE
+ delete from products where prod_id = 2;
+
+// DROP VS DELETE
+-> DROP => IF WE DROP A TABLE, THE TABLE DATA WILL GO BUT WILL ALSO DELETE ITS STRUCTURE ALSO.
+-> DELETE => IF WE DELETE A TABLE, THE TABLE DATA(ROWS) WILL DELETE , BUT NOT DELETE ITS STRUCTURE ALSO,ie.,
+		   TABLE WILL REMAIN THEIR AS EMPTY SET. (TRUNCATE)
+-> TRUNCATE => IF WE TRUNCATE A TABLE , ITS STRUCTURE WILL ALSO STAY BUT TABLE DATA WILL LOST.
+

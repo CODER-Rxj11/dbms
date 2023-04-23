@@ -1,0 +1,12 @@
+use hr;
+show tables;
+select * from jobs;
+select * from jobs where min_salary>8000;
+select * from departments;
+select * from employees where department_id = 8;
+use cm;
+show tables;
+select * from customers;
+select * from customers where country = 'france' || country = 'usa' || country = 'spain';
+select * from customers where creditLimit>80000 && (country = 'france' || country = 'usa' || country = 'spain');
+select * from customers where not( country = 'france' || country = 'usa' || country = 'spain');

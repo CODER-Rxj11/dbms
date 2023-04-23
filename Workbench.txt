@@ -1,0 +1,164 @@
+Workbench is a GUI.
+-> TO RUN A PARTICULAR QUERY => CURSOR + CONTROL + ENTER;
+
+DUMMY DATABASES:
+1. CM -> CUSTOMER
+2. HR
+
+//AS -> ALIASING
+
+// RELATIONAL OPERATOR
+-> =,<,>,! or <> => NOT EQUAL
+
+// LOGICAL OPERATOR
+-> OR, AND , NOT
+
+// BOOLEAN VALUES
+-> 0 AND 1
+
+//IN OR NOT IN
+-> use cm;
+   select * from customers where country = 'france' or country = 'USA' or country = 'SPAIN';
+	or
+   select * from customers where country in ('france','usa','spain');
+
+   select * from customers where country not in ('france','usa','spain');
+
+// LIMIT
+-> PAGINATIONS -> GATHER THE INFORMATION IN FORM OF CHUNKS AND PIECES.
+-> LIMIT THE CONTENT OF THE CONTENT AND SEND THE INFORMATION WHICH IS REQUIRED.
+-> ALWAYS PLACED AT THE END OF QUERY
+
+=> select * form customers limit 5; => 0-5
+=> select * form customers limit 5,10; => 6-15
+
+// ORDER BY
+-> SORT THE DATA ACCORDINGLY
+
+=> select * from customers order by customerName; asc => BY DEFAULT ASCENDING
+=> select * from customers order by customerName desc; => DECENDING
+
+// DISTINCT -> DUE TO DATA DUPLICASY
+-> ALWAYS PLACED AFTER SELECT
+-> select distinct country from customers;
+	or
+-> select distinct(country) from customers;
+
+// NULL
+-> select * from customers where addressline2 is null;
+
+// BITWISE 
+-> select * from customers where creditlimit>71800 and(or '&&' can be also used) creditlimit<110000;
+
+// BETWEEN
+-> INCLUSIVE FOR THE END POINT .
+-> select * from customers where creditlimit between 71800 && 110000;
+
+// AGGREGATE FUNCTIONS
+-> PLACED AFTER SELECT 
+
+1. COUNT 
+-> select count(*) from customers;
+--> Unique count
+-> NULL IS NOT BEING COUNTED!!!
+-> select count(distinct country) from customers;
+2. MIN
+3. MAX
+4. AVG
+5. SUM
+6. LENGTH
+
+-> TO FIND OUT THE 3rd MEMBER FROM TOP VIA CREDIT LIMIT
+=> select * from customers order by creditLimit desc limit 2,1;
+
+//GROUP BY :- ( #IMPORTANT ******* )
+-> MAXIMUM USED BY AGGREGATE FUNCTIONS.
+-> TO FIND OUT COUNT OF PARTICULAR GROUP/ CATEGORY
+=> select count(*), country from customers group by country;
+
+// HAVING 
+-> CLAUSE PAIR WITH HAVING 
+-> TO FILTER THE CONTENT AFTER GROUP BY HAVING IS USED
+-> select count(*), country from customers group by country having count(*)>5; 
+
+// MORE ON DATATYPE
+1.	CHAR => INT 
+2.	VARCHAR => BIGINT
+3.	TINYTEXT => 
+4.	TEXT => DOUBLE
+5.	BLOB => BINARY LONG OBJECT => BIG FILE STORE LIKE MULTIMEDIA
+6.	MEDIUMTEXT => DATE
+7.	MEDIUMBLOB => DATETIME
+8.	LONGTEXT => TIMESTAMP
+9.	LONGBLOB => TIME
+10.	TINYINT => ENUM
+11.	SMALLINT => SET
+12.	MEDIUMINT => BOOLEAN
+13.	JSON => KEY VALUE PAIRS STORED IN THE FORM OF OBJECTS.
+
+=> TIMESTAMP VS EPOCH TIME 
+
+
+///////////////////////////////////////////////////////////////////////
+
+STRING FUNCTION 
+1. CHAR LENGTH
+eg:-
+select char_length("hakoona matata!!!") as Length;
+use cm;
+show tables;
+select * from customers;
+select customerName, char_length(customerName) as LengthOfName from customers;
+
+2. UPDATE 
+set sql_safe_updates = 0;
+UPDATE tablename set ColumnName = 'chutiya' where CONDITION;
+
+3. CONCATE
+select concat("Hello","duniya","kaisi","ho") as MessageFromUs;
+select concat_ws(" ","hello","Raj","Chutiya","hu") as MessageReceived;
+-> CONCATE WHITE SPACE ACCEPT ARGUMENT AS DIFFERENTIATING CHARACTER AND REST NORMAL ARGUMENTS.
+
+4. UPPERCASE
+select ucase('hello') as UpperCaseMessage;
+select upper('hello Bitch') as UpperCaseMessageNew;
+
+5. LowerCase
+select lcase('HELLO BITCHES') as LowerCaseMessage;
+select lower('HII HANDSOME RAJ!!') as LowerCaseMessageNew;
+
+6. Trim
+select trim("       Raj is great !!!         ");
+
+7. SUBSTRING
+-> PART OF A STRING
+-> SYNTAX :- SUBSTR(col_name, start index, no_of_char)
+-> Eg:- select substr("sheryians coding vidhayala", 1, 3) as First_three_char;
+
+8. INSERT
+-> US JAGAY PE RAKH DO
+-> SYNTAX:- insert(ori_string,start_index,no_of_replacable_char);
+-> Eg:-
+select insert("sheryians school",11,0,"coding ") as CompleteName;
+select insert("sheryians coading school",12,1,"o") as CompleteName;
+
+9. REPLACE
+-> CHANGE THE EXISTING WORD
+-> SYNTAX :- replace("Original", "JISKO REPLACE KARNA HAI "JISKO REPLACE KARNA H");
+-> EG:- select replace("hello world", "world", "people") as ReplacedName;
+
+10. REVERSE
+
+11. STRCMP
+-> COMPARISON OF TWO STRING
+-> SYNTAX- strcmp(str1,str2);
+=> IF 1st STRING IS GREATER THAN 2nd STRING THEN ANSWER IS +1 ACCORDING TO ORDER
+---> EG:- select strcmp("hey", "hello");
+=> IF 1st STRING IS LESSER THAN 2nd STRING THEN ANSWER IS -1 ACCORDING TO ORDER
+---> EG:- select strcmp("hello", "hey") as ResultNew;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+NUMERIC FUNCTIONS:-
+
+1. ABSOLUTE -> 

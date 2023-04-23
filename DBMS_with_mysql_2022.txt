@@ -1,0 +1,541 @@
+Introduction 
+    
+Day 01  --what is data
+           --collection of raw bytes
+           --data -> processed -> information -> decision making
+           --helps in decision making 
+      
+     --what is database and DBMS?
+             --where we store the data in the form of bytes / bites in system is called database	
+             --DBMS - set of programms to access the data in a efficient way
+                --primary goal - store and retreive the data in the conveneint and efficient way
+     --Where to save data ?
+			--Memory - RAM, Cache, HDD, SSD
+
+     --File System vs DBMS (why we shifted to DBMS)
+            --Ex - normal and premium customers
+
+     --why we need DBMS
+            --Data Retrieval
+            --Data inconsistent --different records of same user
+            --Data Redundancy --duplicates
+            --Data accessing slow
+            --Data isolation --different format of file
+            --Data Integrity --checks/limit
+            --Data Security
+            --Atomocity problem -- complete process	
+
+Day 02 --Architectures and models
+            --Data Abstraction
+                   --DBMS has purpose to provide abstract view . Example:- E-commerce 
+                   --How we acheive ??
+                     --Internal level,Conceptual level ,External level
+
+                     --Internal level / physical level
+                           --How the data is stored at low level (which data structure is use for storing the data) 
+                           --Physical schema
+
+                     --Conceptual Level / logical level
+                           --What data are stored (stored in table) 
+                           --Global schema
+                           --We can define relationship in logical level but not in physical level
+
+                     --External Level
+
+                     Biggest advantage of physical level is Data Independence
+
+        --Instance , Schema and Sub-schema
+                    --Instance 
+                        collection of information stored in DB at a particular moment is called Instance of DB
+                    --Schema 
+                        It is the overall description or the overall design of the database specified 
+                        during the database design.
+                       --It consist some points - attriutes , constraints , relationships etc
+ 
+                    --Sub - schema 
+                        Differet view/several view is called sub-schema
+
+        --Logical Schema is also known as DB Schema	
+ 
+
+            --Data Models in DBMS- Provides a way to describe the design of a DB at logical level (conceptual level).
+                     --Entity-relationalship Model
+                     --Relational Model
+                     --Object-Oriented Relation Model
+
+            --Database languages - we need language to interact between logical level and physical level
+                                   DDL -> create,drop,alter,truncate. we also define consistency constraints at DDL
+                                   DML -> insert,update , delete,lock 
+                                   DQl -> Select
+                                   DCL -> Grant , Revoke
+                                   TCL 
+                       --All these stuff we'll do with SQL Language
+            
+
+            --DBMS Architecture
+                     ----Different types of architecture
+                                 ---1 Teir Architecture
+                                 ---2 Teir Architecture
+                                 ---3 Teir Architecture
+                                 ---Teir vs 3 Teir
+                                      --Scalability
+                                      --Data integrity
+                                      --Security    
+
+Day 03 --Data model - Collection of conceptual tools for describing data , data relationships,data semantic and consistency constraints.  
+       ---ER Models
+            1. It is a high level data model based on a perception of a real world that consists of a collection of basic objects, called
+               entities and of relationships among these objects.
+            2. Graphical representation of ER Model is ER diagram, which acts as a blueprint of DB.
+
+            --Entity , Entity set
+            
+            --Attribute
+                  Single value attribute, Composite attribute, multi-value attribute , derived attribute
+
+            Ex - Er daigram of social media application  
+        
+           ---Relationships : 
+                   Types of relationships :
+                     --Weak entity and strong entity
+                     --Strong Entity is independent of any other entity in the schema
+                     --A weak entity is an entity set that does not have sufficient attributes for Unique Identification of its records.
+	     
+            --Degree of Relationships
+                     --Unary relationships,Binary relationships,ternary relationship
+          
+            --RelationShip Constraints  
+                  --1.Mapping Cardinality  - Number of entities to which another entity can be associated via a relationship.
+                         --One to One , One to Many , Many to One , Many to Many  
+                 
+                  --2.Participants Constraints             
+                            total participants ,partial participants
+                            --weak entity has total participants constraints , but stronge entity may not have toal participants
+
+Day 04 --Extended ER features
+                  --Specialization,Generalization,and Aggregation
+               
+                  --Specialization - reduce the redundancy of entities.
+                                     --IS a relation
+                                     It goes top to down approach
+                                     why we need specialization ?
+
+                  --Generalization - It goes bottom to top
+                                     --reverse the specialization
+
+                  --Aggregation - it is a technique 
+                                --Abstraction is applied to treat relationship as higher-level entities.
+
+             --How to think ER daigram of any database and formulate it.
+
+Day 05 --Relational Model
+             --super key - any C&P of attribute which can uniquely define the tuple
+             --Candidate key - it is the subset of super key which can uniquely identify tuple.It contains no redundant data.	
+                    CK can't be null.
+             --Primary key - selected out of CK.there is only one PK in any entity
+             --Alternate key - All CK excepts PK.
+             --Foreign key - It creates the relation between two tables
+             --Composite key - PK formed by atleast 2 attribute
+             --Compound key - PK which is formed by 2 FK
+             --Surrogate key - Synthetic PK.
+                             --Generated automatially by DB , usually an integer value
+
+     --Convert ER model to Transition model
+
+Day  06     MYSQL START FROM HERE	
+    --Understanding data
+		--Types of data
+		--How they are stored inside a database
+	--Different types of applications you get in MySQL
+		--Database Server
+		--MySQL Workbench
+		--MySQL cmd line client
+		--Connectors or drivers
+	--Basic rules
+		--MySQL is case-insensitive
+		--Use of semicolon is must
+		--Use snake_case
+
+		--DB
+			--CREATE DATABASE <db_name>;
+			--USE <db_name>;
+			--SHOW DATABASES;
+			--DROP DATABASE <db_name>;
+			--SELECT DATABASE();
+		--Basic Datatypes
+			--INT 
+			--VARCHAR(up to 255 characters)
+		--Table 
+			--Columns & Rows
+			--CREATE TABLE <tab_name>(col_name datatype, .....);
+			--SHOW TABLES;
+			--DESC <tab_name>; 
+			--SHOW COLUMNS FROM <tab_name>;
+			--DROP TABLE <tab_name>;
+        
+		--COMMIT
+			--By default Autocommit is active
+
+Day 07	--Insertion of data
+		--INSERT INTO <tab_name>(col_name...) VALUES (val...);
+		--INSERT INTO <tab_name> VALUES(val1...);
+		--DEFAULT keyword
+		--NULL values
+		--Inserting multiple rows at once
+	--Retrieving data
+		--SELECT * FROM <tab_name>;
+
+         copy the data of one table into another table
+         Ex:- create table orders_archeived AS select * from orders;
+         But in the copied table there will be no primary key and auto_increment key.
+         so If we want to insert a new record in copied table we have to declare PK AK in copied table
+
+	--Constraints on columns
+		--NOT NULL
+		--DEFAULT
+		--UNIQUE
+		--PRIMARY KEY
+		--AUTO INCREMENT
+
+Day 08	--Selecting particular column(s) from table
+	--Math Operations can also be performed on columns
+	--Another way of setting primary key
+	--Clasuses
+		--FROM
+		--WHERE
+		--AS (aliase)
+
+	--Updating Rows
+		--E <condition>;
+		--UPDATE <tab_name> SET <col_name> = 'updated_value';
+	--Deleting Data
+		--DELETE FROM <tab_name> WHERE <condition>;
+		--DELETE FROM <tab_name>;
+
+Day 09	--Introduction to GUI
+		--Writing/Running/Loading MySQL scripts.
+	--Relational Operator
+		-- >, >=, <, <=, !=, =,<>(not equal)
+	--Logical Operator
+		--OR
+		--AND
+		--NOT
+	--Boolean Values
+		--0 or 1
+		--truth tables
+	--Hackerrank
+	--IN & NOT IN operator
+		--works with list
+		--Ex -  SELECT * FROM STUDENT WHERE sem IN (2, 4, 6);
+					
+Day 10	--Clasuses
+		--LIMIT
+			--Let's understand pagination first
+			--Ex - SELECT * FROM <tab_name> LIMIT quantity;
+			--OFFSET
+			--Must be in the end
+		--ORDER BY
+			--Ascending by default
+			--single column, multiple column
+			--DESC
+		--DISTINCT
+			--To avoid duplicacy
+			--Ex - SELECT DISTINCT col_name FROM <tab_name>;
+			--Comes right after SELECT
+			--Multiple Columns
+
+Day 11	--IS NULL / IS NOT NULL
+	--BETWEEN-AND
+		--Ex - SELECT * FROM <tab_name> WHERE sem BETWEEN 4 AND 6;
+		--Inclusive range
+	--LIKE
+		--Used to refine selection on the basis of pattern
+		-- ... WHERE name LIKE 'pattern'
+			'%'  - Return all 
+			'%lab%' - Return all which have 'lab' in between
+			'_' - One character
+	--REGEXP
+		-^ represent the start, $ represent end, | - or
+		--[] - list
+		--GFG
+	--COUNT
+		--COUNT(*)
+		--COUNT(DISTINCT <col_name>)
+		--COUNT(*) WHERE <condition>
+
+Day 12	--Aggregate functions
+		--COUNT
+		--MIN
+		--MAX
+		--SUM
+		--AVG
+    --length
+	--GROUP BY
+   --Having
+	--More on Data types
+		--CHAR	
+		--DECIMAL
+			--(6, 2) 
+		--BLOB
+		--FLOAT
+		--DOUBLE
+		--JSON
+		--DECIMAL vs FLOAT/DOUBLE
+
+Day 13	--String Functions
+		--CHAR_LENGTH or CHARACTER LENGTH
+		--CONCAT(args1, args2, ....) / CONCAT_WS(seperator, args1, args2...)
+		--UPPER or UCASE
+		--LOWER or LCASE
+		--TRIM
+		--SUBSTRING / SUBSTR(col_name, start_index, no_of_char	)
+		--INSERT(ori_string, index, no_of_char_to_be_replaced, string2)
+		--REPLACE(ori_str, from_str, new_str)
+		--REVERSE
+		--STRCMP(str1, str2)
+
+Day 14	--Numeric Functions
+		--ABS
+		--CEIL
+		--FLOOR
+		--MOD
+		--PI
+		--POW
+		--RAND
+		--ROUND
+		--SQRT
+		--TRUNCATE(number, no_of_characters_to_be_after_point)
+		--DIV		Ex - SELECT 40 DIV 2;
+	--Working with Date and Time
+		--Datatype
+			--DATE
+				YYYY-MM-DD
+			--TIME
+				hh:mm:ss
+			--DATETIME
+				YYYY-MM-DD hh:mm:ss
+			--TIMESTAMP and why?
+                   --TIMESTAMP is four bytes vs eight bytes for DATETIME . Timestamps are also lighter
+                     on the database and indexed faster
+                   --for different nation
+				same as datetime but it has a range - epoch time
+				'1970-01-01 00:00:01' UTC to '2038-01-19 03:14:07' UTC
+				--DEFAULT NOW()
+				--ON UPDATE CURRENT_TIMESTAMP or NOW()
+
+Day 15	--Date Functions
+		--CURDATE
+		--CURTIME
+		--NOW
+		--Rest from docs
+
+Day 16	--Subqueries
+		-- SELECT .......WHERE creditlimit = (another select query which returns  a creditlimit val)
+	--Case
+		--SELECT customername, country,
+			CASE
+				WHEN country = 'USA' THEN 'US'
+				WHEN country = 'INDIA' THEN 'IN'
+				ELSE 'some text'
+			END AS country_code
+		  FROM customers;
+
+		
+	--Altering table structure
+		--ALTER TABLE <tab_name> 
+			ADD col_name data_type;
+			DROP COLUMN col_name;
+			MODIFY COLUMN col_name data_type;	
+	--Let's talk about relationships
+		--ONE TO ONE----Example 1.empl- address
+		--ONE TO MANY---Example 1.customer-order 2.employee-projects
+		--MANY TO MANY --- One of the best example 1.author-book  2.customer-products
+		--FOREIGN KEY	
+	
+Day 14	--Creating table with foreign key
+		--FOREIGN KEY (current_col) REFERENCES other_tab(other_tab_pk)
+	--Using subqueries with multiple tables	
+	--JOINS
+		--CROSS JOIN
+			--SELECT * FROM customers, orders;
+		--INNER JOIN 	
+			--SELECT * FROM customers, orders where customers.customernumber = orders.customernumber
+			--ALIAS for TABLE
+
+Day 15 --OUTER JOINS
+		--LEFT JOIN		
+		--RIGHT JOIN
+	--CASCADE CONSTRAINT
+		--ON DELETE CASCADE
+       --ON UPDATE RESTRICT(default),CasCade
+	--Joining more than two tables
+	--USING clause
+		--can be used in place of joining column with the same name
+		--USING(customernumber)
+	--SELF JOIN
+		FROM employees e JOIN employees r ON e.reportsTo = r.employeeNumber
+	--JOINS across DBs
+		db_name.tab_name aliase
+
+Day 16	--VIEWS
+		--Facts
+			--View is a named query stored in the database catalog.
+			--Increases security - Restrict Access
+			--Virtual tables
+		--Creating views
+			CREATE VIEW view_name AS select query
+		--Operations
+			SELECT * from view_name
+			Can also apply conditions in where clause, join with other data
+		--Dropping views
+			DROP VIEW view_name;
+		--Altering views
+			CREATE OR REPLACE VIEW view_name AS select query
+		--Deleting data & Updating data from views
+			--Also effects the origional data
+		--WITH CHECK OPTION
+
+	--Renaming a table or view
+		--RENAME TABLE old_name TO new_name;
+
+
+Day 17	--User 
+		--CREATE USER if not exits username IDENTIFIED BY 'passowrd';
+                                  or
+       CREATE USER 'username'@'host' IDENTIFIED WITH authentication_plugin BY 'password';
+                      
+		--SELECT * FROM mysql.user;
+		--DROP USER IF EXISTS user_name;
+	--Privilages
+	--GRANT  If you want to give all privileges to a newly created user, execute the following command.
+                  GRANT ALL PRIVILEGES ON * . * TO peter@localhost;  
+	
+		 If you want to give specific privileges to a newly created user, execute the following command.
+                  GRANT CREATE, SELECT, INSERT ON * . * TO peter@localhost; 	
+
+                 If you want to see the existing privileges for the user, execute the following command.
+                 SHOW GRANTS for username;   
+
+
+       --take back privileges
+       REVOKE INSERT ON *.* FROM 'jeffrey'@'localhost'
+       REVOKE SELECT ON world.* FROM 'role3';
+
+Day 18 --Functional dependencies
+                 A ->B
+                 A ----determinant
+                 B ----dependent
+
+        --trivial  - here B is the subset of A
+             it is valid but you didnt find new value
+               Example : AB->A
+
+        --non-trivial - here B is not the subset of A
+             it is valid and you will find here new value
+               Example : AB->ABC  
+
+    --Normalization 
+             why normalization?
+                  to avoid redundant data and not to store redundant data
+
+            --what if we have redundant data , it generates 3 anamolies .It means abnormalities	
+                  --Insertion->when certain data cannot insert into DB without presence of other data
+                  --Deletion->the deletion of data results in the unintended loss of some other important data
+                  --Updation->when an update of a single data value requires multiple rows of data to be updated	
+
+             what we do in normalization?
+                --decompose table into multiple table untill we achieve SRP(single responsbile principle) 
+
+             1NF - Every relation cell must have atomic value
+             2NF - it should be 1NF
+                   there should not be any partail dependency 
+                    partial dependency - determin non-prime attribute by part of prime attribute 
+
+             3NF - it shoulb be 2NF
+                   no transivity dependency exist
+                   non-prime attribute should not find non-prime attribute
+
+             BCNF(Boyce code normal form) - advance version of 3NF
+                   it should be 3NF 
+                   non-prime/prime attribute cannot determine prime attribute
+
+Day 19 --Transaction 
+              --A unit of work done against the DB in a logical sequence
+
+       --Acid Properties 
+          To ensure integrity of the data,we require that the DB system maintain the following properties of the transaction
+      
+          Atomicity - Either all operations of transaction are reflected properly in the DB , or none are.
+          Consistency - Itegrity must be maintained after and before transaction
+          Isolation - Even though multiple transactions may execute consurrently 
+          Durability - 	after transaction completes successfully, the changes it has made to the database persist,
+                       even if there are system failure
+
+       --Trnsaction state
+                  Active state
+                  partial state 
+                  commitement state
+                  failure state
+                  abort state
+                  terminated state 
+
+Day 20 --Indexing 
+              --disk and index table
+              --index table always sorted there
+              --by default indexing setted in sql/mysql
+              
+           --primary index(clustering index) 
+                 --where data or file sorted by any key or attribute				
+           
+           --Dense index 
+                    the dense index contains an index record for every search key value in the data file
+
+           --Sparse index 
+                    An index record appears for only some of the search-key
+           
+           --Based on key and non-key attribute
+               Based on key attribute are sorted in nature it means it follows sparse index 
+               Based on non-key attribute are sorted but duplicates.
+
+
+                                           DB optimization
+Day 21 --Clustring/replications
+           it is the process of combining more than one servers or instances connecting a single database
+           --replicates
+
+          --Advantages 
+                  	Data Redundancy,Load balancing - Load balancer , High availability
+         
+          Ex- content delivery system  
+
+  --Partioning 
+       --It is the technique used to divide stored database objects into separate servers.
+       --Vertical partioning,Horizontal partioning
+
+    --Advantage:parallelism 
+      
+     --When Partioning is Applied?
+        --Dataset become much that managing and dealing with it become a tedious task
+
+     --Distributed Database
+        --A single logical database that is,spread across multiple server and logically interconnected
+          by network.
+                  
+
+  --Sharding 
+       --Technique to implement Horizontal Partitioning.
+        The fundamental idea of Sharding is the idea that instead of having all the data sit on one DB instance, we split it up and introduce a Routing layer so that we can forward the request to the right instances that actually contain the data.
+   Pros:
+     Scalability
+     Availability
+
+   Cons:
+    Complexity, making partition mapping, Routing layer to be implemented in the system, Non-uniformity that creates the necessity of Re-
+Sharding
+
+    Not well suited for Analytical type of queries, as the data is spread across different DB instances. (Scatter-Gather problem)
+CodeHelp
+           
+            
+           
+

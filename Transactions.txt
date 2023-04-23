@@ -1,0 +1,85 @@
+TRANSACTIONS :- 
+
+STEPS FOR TRANSACTION
+
+// FOR AN INSTANCE LET US CONDIDER A TRANSACTION BTW A SOURCE (1000) AND A DESTINATION (2000) BY AN AMOUNT OF 50
+
+1, READ FROM A (SOURCE = 1000)
+-> CHECK WHETHER THE TRASACTION IS POSSIBLE OR NOT
+
+2. UPDATE THE SOURCE 
+-> A= A-50;
+
+3. WRITE IN A (950)
+
+// THESE THREE STEPS ARE COMES UNDER ABSTRACTION PROCESS
+// ABSTRACTION IS THE PROCESS OF SHOWING THE NESSARY DATA AND HIDE THE UNNESSASARY DATA.
+
+4. READ FROM B(DESTINATION = 2000) 
+
+5. UPDATE THE DESTINATION :- B = B+50;
+
+6. WRITE IN B (2050)
+
+// ATOMICITY => THESE ALL STEPS SHOULD BE CONSIDERED IN ONE FORM i.e., AFTER ALL STEPS EITHER THE TRANSACTION 
+IS SUCESSFUL OR FAILED
+
+// THESE ALL 6 STEPS COMBINELY ARE KNOWN AS TRANSACTION
+
+// TRANSACTION IS NOT DONE BY ACTUAL DB , WHICH OCCURS IN TEMPORARY MEMORY(i.e., BUFFER) WHICH PERFORM ALL 
+OPERATIONS AND NOT THE UPDATE BUT UNTIL THE OPERATION IS SUCCESSFUL IT WILL NOT UPDATE IN ORIGINAL DB.
+
+---------------------------------------------------------------------------------------------------------------
+
+// ACID PROPERTIES :-
+
+-> TO ENSURE INEGRITY OF THE DATA WE REQUIRE THAT THE DB SYSTEM MAINTAIN THE FOLLOWING PROPERTIES
+
+1. ATOMICITY :- EITHER THE OPERATION ARE REFLECTED PROPERLY (i.e., SUCCESSFUL OR FAILURE)
+
+2. CONSISTENCY :- INTEGRITY MUST BE RETAIN AFTER AND BEFORE TRANSACTION(i.e, SUM REMAINS CONSTANT)
+
+3. ISOLATION(DIVISION/SEPERATION) :- EVEN THRU MULTIPLE TRANSACTION(IN SINGLE TIME i.e., CONCURENCY) 
+   MY EXECUTE COMPLETELY
+
+-> In a single time when more transactions are performing concurrently the sender side only send one amount and
+the other amount will remain there but on the contrary the receiver side recives both transaction as a result 
+consistency not acheive and losses are occured 
+
+--> This could be overcome by the concept of "CONTENT SWITCHING", here both transaction will leave on same by 
+but now server has "RADIQUE", in which all transaction are listed in order line by line (BY MULTITHREADING AND 
+LOCK AND KEY PROCESS)
+
+4. DURABILITY :- AFTER THE TRANSACTION COMPLETE SUCCESSFUL , THE CHANGES ARE MADE PERSIST(PERMANANTELY).
+
+-> If transaction is completely done and somehow the db crashed and the data stored in buffer memory will not
+send it to permanent memory
+
+-> Thus db has to maintain buffer as if some loss are occured the "LOGS" which are stored in Permanent Memory
+which is bring by the "RECOVERY MANAGEMENT COMPONENT"
+
+--------------------------------------------------------------------------------------------------------------
+
+// TRANSACTION STATES
+
+1. ACTIVE STATE :- THE TRANSACTION STARTS FROM HERE
+
+2. PARTIAL STATE :- THE STATE AFTER THE DATA IS BOTH READ AND WRITE 
+
+3. COMMITMENT STATE :- COMMIT STATE
+
+4. TERMINATE STATE :- THE TRANSACTION IS END HERE
+
+5. FAILURE STATE :- IF NOT READ/WRITE 
+
+6. ABORTED STATE :- ROLLBACK TO STARTING PATH
+
+		(IF SUCCESSFUL)
+ACTIVE_STATE --> PARTIAL_STATE -->COMMITMENT_STATE
+	|							|
+	|(IF FAILURE)					|
+	V							V
+FAILURE STATE --> ABORTED_STATE --> TERMINATE_STATE
+
+---------------------------------------------------------------------------------------------------------------
+

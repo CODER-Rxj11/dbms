@@ -1,0 +1,13 @@
+use cm;
+show tables;
+select * from customers;
+select * from customers where state is null && addressLine2 is null;
+select * from customers where salesRepEmployeeNumber is not null;
+select * from customers where creditLimit>80000 && creditLimit<120000;
+select * from customers where customerName like '%gift%';
+select * from customers where customerName like '%ltd%';
+select count(*) from customers where customerName like 'co%';
+select count(distinct country) as UniqueCountries from customers ;
+select count(*) from customers where creditLimit > 100000;
+select * from products;
+select productCode, productName, buyPrice, MSRP, (MSRP-buyPrice) as Profit_percent from products order by (MSRP-buyPrice) ;
